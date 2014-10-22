@@ -1,4 +1,4 @@
-algorithms
+DataStructuresAndAlgorithms
 ==========
 
-Personal implementations of famous algorithms and some tests.
+Personal implementations of famous algorithms, common data structures and some tests.
