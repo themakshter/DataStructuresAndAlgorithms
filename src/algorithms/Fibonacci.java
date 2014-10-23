@@ -8,7 +8,7 @@ public class Fibonacci {
 		StringBuilder sb = new StringBuilder();
 		String separator = " - ";
 
-		n = 50;
+		n = 40;
 		System.out.println("For n = " + n);
 
 		startTime();
@@ -20,10 +20,19 @@ public class Fibonacci {
 		System.out.println(sb.toString());
 		calculateTime();
 		sb = new StringBuilder();
-		System.out.println("Iterative :");
+		System.out.println("Iterative Array :");
 		startTime();
 		for (int i = 0; i < n; i++) {
 			sb.append(fibonacciIterativeArray(i)).append(separator);
+		}
+		sb.setLength(sb.length() - separator.length());
+		System.out.println(sb.toString());
+		calculateTime();
+		sb = new StringBuilder();
+		System.out.println("Iterative Variables :");
+		startTime();
+		for (int i = 0; i < n; i++) {
+			sb.append(fibonacciVariables(i)).append(separator);
 		}
 		sb.setLength(sb.length() - separator.length());
 		System.out.println(sb.toString());
@@ -60,7 +69,23 @@ public class Fibonacci {
 			fib[i] = fib[i - 1] + fib[i - 2];
 		}
 		return fib[n];
-
+	}
+	
+	public static long fibonacciVariables(int n){
+		if (n == 0)
+			return 0;
+		if (n == 1)
+			return 1;
+		long x,x_1,x_2;
+		x = 0;
+		x_1 = 1;
+		x_2 = 0;
+		for(int i = 2; i <=n; i++){
+			x = x_1 + x_2;
+			x_2 = x_1;
+			x_1 = x;
+		}
+		return x;
 	}
 
 }
