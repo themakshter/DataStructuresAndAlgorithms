@@ -22,4 +22,7 @@ public class Stack {
 		return top.getData();
 	}
 	
+	public String toString(){
+		return top.toString();
+	}
 }
