@@ -18,22 +18,22 @@ public class SinglyLinkedNode extends Node {
 	public void appendToTail(Object d) {
 		SinglyLinkedNode end = new SinglyLinkedNode(d);
 		SinglyLinkedNode n = this;
-		while (n.next != null) {
-			n = n.next;
+		while (n.getNext() != null) {
+			n = n.getNext();
 		}
-		n.next = end;
+		n.setNext(end);
 	}
 
 	public SinglyLinkedNode deleteNode(SinglyLinkedNode head, Object d){
 		SinglyLinkedNode n = head;
 		
 		if(n.getData().equals(d)){
-			return head.next;
+			return head.getNext();
 		}
 		
-		while(n.next != null){
+		while(n.getNext() != null){
 			if(n.getData().equals(d)){
-				n.next = n.next.next;
+				n.setNext(n.getNext().getNext());
 				return head;
 			}
 		}
@@ -53,14 +53,14 @@ public class SinglyLinkedNode extends Node {
 		SinglyLinkedNode previous = null;
 		SinglyLinkedNode temp = null;
 		
-		while(n.next != null){
-			temp = n.next;
-			n.next = previous;
+		while(n.getNext() != null){
+			temp = n.getNext();
+			n.setNext(previous);
 			previous = n;
 			n = temp;
 		}
 		
-		n.next = previous;
+		n.setNext(previous);
 		
 		return n;
 	}
