@@ -32,7 +32,7 @@ public class SinglyLinkedNode extends Node {
 		}
 		
 		while(n.getNext() != null){
-			if(n.getData().equals(d)){
+			if(n.getNext().getData().equals(d)){
 				n.setNext(n.getNext().getNext());
 				return head;
 			}
@@ -69,4 +69,15 @@ public class SinglyLinkedNode extends Node {
 		return reverse(this);
 	}
 
+	public String toString(SinglyLinkedNode n){
+		StringBuffer buffer = new StringBuffer();
+		while(n.getNext()!=null){
+			buffer.append(n.getData());
+			buffer.append(" -> ");
+		}
+		buffer.append(n.getData());
+		return buffer.toString();
+	}
+	
+	
 }
