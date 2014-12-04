@@ -51,10 +51,11 @@ public class SinglyLinkedNode extends LinkedListNode {
 		while(n.getNext()!=null){
 			buffer.append(n.getData());
 			buffer.append(" -> ");
+			n = n.getNext();
 		}
 		buffer.append(n.getData());
 		return buffer.toString();
-			}
+	}
 
 	@Override
 	public LinkedListNode reverse(LinkedListNode node) {
