@@ -1,6 +1,6 @@
 package datastructures;
 
-public class SinglyLinkedNode extends Node {
+public class SinglyLinkedNode extends LinkedListNode {
 	private SinglyLinkedNode next;
 
 	public SinglyLinkedNode getNext() {
@@ -15,16 +15,19 @@ public class SinglyLinkedNode extends Node {
 		super(data);
 	}
 
-	public void appendToTail(Object d) {
+	@Override
+	public void appendToTail(LinkedListNode node, Object d) {
 		SinglyLinkedNode end = new SinglyLinkedNode(d);
-		SinglyLinkedNode n = this;
+		SinglyLinkedNode n = (SinglyLinkedNode) node;
 		while (n.getNext() != null) {
 			n = n.getNext();
 		}
 		n.setNext(end);
 	}
 
-	public SinglyLinkedNode deleteNode(SinglyLinkedNode head, Object d){
+	@Override
+	public LinkedListNode delete(LinkedListNode node, Object d) {
+		SinglyLinkedNode head = (SinglyLinkedNode) node;
 		SinglyLinkedNode n = head;
 		
 		if(n.getData().equals(d)){
@@ -40,12 +43,22 @@ public class SinglyLinkedNode extends Node {
 		
 		return head;
 	}
-	
-	public SinglyLinkedNode deleteNode(Object d){
-		return deleteNode(this,d);
-	}
 
-	public SinglyLinkedNode reverse(SinglyLinkedNode n){
+	@Override
+	public String toString(LinkedListNode node) {
+		SinglyLinkedNode n = (SinglyLinkedNode) node;
+		StringBuffer buffer = new StringBuffer();
+		while(n.getNext()!=null){
+			buffer.append(n.getData());
+			buffer.append(" -> ");
+		}
+		buffer.append(n.getData());
+		return buffer.toString();
+			}
+
+	@Override
+	public LinkedListNode reverse(LinkedListNode node) {
+		SinglyLinkedNode n = (SinglyLinkedNode) node;
 		if(n == null){
 			return null;
 		}
@@ -64,20 +77,5 @@ public class SinglyLinkedNode extends Node {
 		
 		return n;
 	}
-	
-	public SinglyLinkedNode reverse(){
-		return reverse(this);
-	}
-
-	public String toString(SinglyLinkedNode n){
-		StringBuffer buffer = new StringBuffer();
-		while(n.getNext()!=null){
-			buffer.append(n.getData());
-			buffer.append(" -> ");
-		}
-		buffer.append(n.getData());
-		return buffer.toString();
-	}
-	
 	
 }
