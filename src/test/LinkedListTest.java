@@ -12,20 +12,27 @@ public class LinkedListTest {
 	}
 	
 	private static void testDoublyLinkedList() {
-		addItems(new DoublyLinkedNode(null));
+		DoublyLinkedNode doubleList = (DoublyLinkedNode) addItems(new DoublyLinkedNode(null));
+		reverseList(doubleList);
 	}
 
 	public static void testSinglyLinkedList(){
-		addItems(new SinglyLinkedNode(null));
+		SinglyLinkedNode singleList = (SinglyLinkedNode) addItems(new SinglyLinkedNode(null));
+		reverseList(singleList);
 	}
 	
-	public static void addItems(LinkedListNode n){
+	public static LinkedListNode addItems(LinkedListNode n){
 		int[] testNums = {1,2,3,4,5,6,7,8,9};
 		n.setData(0);
 		for(int i : testNums){
 			n.appendToTail(i);
 		}
 		System.out.println(n.toString());
+		return n;
+	}
 	
+	public static void reverseList(LinkedListNode n){
+		n = n.reverse();
+		System.out.println(n.toString());
 	}
 }
